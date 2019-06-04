@@ -6,7 +6,7 @@
 cd /gondor/dieunel/Austreococcus_tauri/snp_calling
 
 
-#Download
+#Download, note that. this could be donwloaded too using sra toolkit
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR072/SRR4026808/SRR4026808_1.fastq.gz
 wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR072/SRR4026808/SRR4026808_2.fastq.gz
 
@@ -59,16 +59,13 @@ vcftools --vcf SRR4026808.vcf --recode --recode-INFO-all --out SRR4026808 --minQ
 bcftools stats  SRR4026808.recode.vcf >  SRR4026808_FilteredVCFStats.txt
 
 
-
-
-
 #For effective population size inference, we need snps in each chromosome
 grep '>' GCF_000214015.3_version_140606_genomic.fna  #printing the chromosome name (header)
 
 #Create input snps for msmc2
 ./generate_multihetsep.py chr1.vcf.gz > chr1.msmc.input.txt #Repeated for all the chromosomes
 #Effective population size history
-./msmc2 -p 1*2+15*1+1*2 -o final_11 *input.txt #All chromosomes that were generated in previous step
+./msmc2 -p 1*2+15*1+1*2 i=100 -o final_11 *input.txt #All chromosomes that were generated in previous step
 
 #Plotting the msmc2 output in R
 f10=read.table('/Users/mzillur/thesis/msmc/final_11.final.txt',header = T)
