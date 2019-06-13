@@ -1,4 +1,7 @@
-import pandas as pd
+#Author: dieunel Derilus
+# This python script will takes as input a two columns file containing gene ID and GI  number , just to link each gene id to its corresponding  Number
+ import pandas as pd
+
 ##open the table delimited.txt file linking gene ID and GI number(two columns with gene_id and GI as header)
 ##this file could be obtained after the blast search of the proteome fasta file  against the non redundant protein database
 id_gi=pd.read_table('ref_gi.txt')
