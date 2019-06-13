@@ -25,5 +25,8 @@ id_gi1=id_gi[pd.notnull(id_gi['uniprot'])]
 # create dictionary between UniProt to Knumber
 d2=dict(zip(ukdb.uniprot,ukdb.knumber))
 # map uniprot to knumer 
-id_gi3=id_gi2['knumber']=id_gi.uniprot.map(d1)
-id_gi=id_gi[pd.notnull(id_gi['knumber'])]
+id_gi1['knumber']=id_gi1.uniprot.map(d1)
+id_gi2=id_gi1[pd.notnull(id_gi1['knumber'])]
+
+# save to *csv file
+id_gi2.to_csv(Species_name_GeneID_KO.csv)
