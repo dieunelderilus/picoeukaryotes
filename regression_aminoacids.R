@@ -1,5 +1,5 @@
 #author : Dieunel Derilus
-This scripts could takes different datasets and plot multiple regressions in one  single plots
+#This scripts could takes different datasets and plot multiple regressions in one  single plots
 data=read.csv("pC_significant_R1.csv",row.names = 1)
 data1=read.csv("pc_not_significant2.csv",row.names = 1)
 par(mfcol=c(2,2))
